@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <!-- user editable configuration 
+    use this portion to change things that you want to customize
+    this is typically things that affect the UI and quality of life
+  -->
+  <editable>
+    <!-- must be a STRING matching one of the following -->
+    <!-- light, dark, system -->
+    <theme>
+    </theme>
+    <!-- pagination for todo list -->
+    <todo-pagination>
+      <!-- must be a STRING of `true` or `false` -->
+      <set>true</set>
+      <!-- must be an INTEGER value -->
+      <items-per-page>
+        20 <!-- default value is `20` per list load -->
+      </items-per-page>
+    </todo-pagination>
+  </editable>
+  <!-- APP CONFIGURATION VALUES -->
+  <!-- DO NOT EDIT BY HAND -->
+  <!-- CREATED BY DEVELOPER -->
+  <non-editable>
+  </non-editable>
+</config>
