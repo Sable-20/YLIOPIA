@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning].
 
 - /
 
+## 1.0.0+4 - 2025-01-20
+
+### Added
+
+- config file `data/config.xml`
+- data folder `data/`
+
 ## [1.0.0+3] - 2025-01-19
 
 ### Changed
