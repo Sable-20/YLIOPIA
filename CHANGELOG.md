@@ -30,6 +30,6 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[Unstable]: https://github.com/Sable-20/yliopia/compare/v1.0.0%2B1...HEAD
-[1.0.0+1]: https://github.com/Sable-20/YLIOPIA/tree/v1.0.0%2B1
-[1.0.0+3]: https://github.com/Sable-20/YLIOPIA/tree/v1.0.0%2B3
+[Unstable]: https://github.com/Sable-20/yliopia/compare/v1.0.0%2B3...HEAD
+[1.0.0+1]: https://github.com/Sable-20/YLIOPIA/releases/tag/v1.0.0%2B1
+[1.0.0+3]: https://github.com/Sable-20/YLIOPIA/releases/tag/v1.0.0%2B3
