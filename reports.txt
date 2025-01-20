@@ -1,0 +1,45 @@
+[2K⠙ Analyzing...[2K[2K⠹ Analyzing 8 files... 9ms[2K⠸ Analyzing 8 files... 0.8s[2K⠼ Analyzing 8 files... 0.8s[2K✔ Analysis is completed. Preparing the results: 0.8s
+
+lib/src/settings/settings_service.dart:
+WARNING   This block is empty. Try checking it for potentially missing code.
+          at lib/src/settings/settings_service.dart:13:55
+          no-empty-block : https://dcm.dev/docs/rules/common/no-empty-block
+
+
+lib/src/settings/settings_controller.dart:
+STYLE     private-fields should be before constructors.
+          at lib/src/settings/settings_controller.dart:14:3
+          member-ordering : https://dcm.dev/docs/rules/common/member-ordering
+
+STYLE     private-fields should be before constructors.
+          at lib/src/settings/settings_controller.dart:18:3
+          member-ordering : https://dcm.dev/docs/rules/common/member-ordering
+
+WARNING   Avoid using the 'late' keyword. Try removing it.
+          at lib/src/settings/settings_controller.dart:18:3
+          avoid-late-keyword : https://dcm.dev/docs/rules/common/avoid-late-keyword
+
+
+lib/src/sample_feature/sample_item.dart:
+STYLE     public-fields should be before constructors.
+          at lib/src/sample_feature/sample_item.dart:5:3
+          member-ordering : https://dcm.dev/docs/rules/common/member-ordering
+
+
+lib/src/app.dart:
+WARNING   The first class name does not match the file name. Try renaming it.
+          at lib/src/app.dart:11:7
+          prefer-match-file-name : https://dcm.dev/docs/rules/common/prefer-match-file-name
+
+WARNING   Avoid non-null assertions. Try rewriting the code without it.
+          at lib/src/app.dart:54:15
+          avoid-non-null-assertion : https://dcm.dev/docs/rules/common/avoid-non-null-assertion
+
+
+Scanned folders: 4
+Scanned files: 8
+warning issues: 4, style issues: 3
+Sun Jan 19 22:17:19 EST 2025 ANALYSIS
+[2K⠙ Analyzing...[2K[2K⠹ Analyzing 8 files... 10ms[2K⠸ Analyzing 8 files... 0.7s[2K✔ Analysis is completed. Preparing the results: 0.7s
+
+✔ no issues found!
