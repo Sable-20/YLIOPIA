@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  objectbox: ^4.0.3
+  objectbox: any
   objectbox_flutter_libs: any
 
 dev_dependencies:
