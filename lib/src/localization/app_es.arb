@@ -5,5 +5,10 @@
   "appTitle": "yliopia",
   "@appTitle": {
     "description": "El título de la aplicación"
+  },
+  "todoTitle": "Lista de Quehaceres",
+  "@todoTitle": {
+    "description": "El título de la lista de quehaceres para el usario",
+    "type": "text"
   }
 }

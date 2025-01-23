@@ -10,15 +10,16 @@ import 'settings_service.dart';
 class SettingsController with ChangeNotifier {
   // Make SettingsService a private variable so it is not used directly.
   final SettingsService _settingsService;
-  
-  SettingsController(this._settingsService);
 
   // Make ThemeMode a private variable so it is not updated directly without
   // also persisting the changes with the SettingsService.
+  // ignore: avoid-late-keyword
   late ThemeMode _themeMode;
 
   // Allow Widgets to read the user's preferred ThemeMode.
   ThemeMode get themeMode => _themeMode;
+  
+  SettingsController(this._settingsService);
 
   /// Load the user's settings from the SettingsService. It may load from a
   /// local database or the internet. The controller only knows it can load the

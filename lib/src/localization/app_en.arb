@@ -5,5 +5,10 @@
   "appTitle": "yliopia",
   "@appTitle": {
     "description": "The title of the application"
+  },
+  "todoTitle": "Todo",
+  "@todoTitle": {
+    "description": "The title of the todo list",
+    "type": "text"
   }
 }

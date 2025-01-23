@@ -42,7 +42,10 @@ class SettingsView extends StatelessWidget {
             DropdownMenuItem(
               value: ThemeMode.dark,
               child: Text('Dark Theme'),
-            )
+            ),
+            // DropdownMenuItem(
+            //   value: catppuccinTheme(catppuccin.frappe)
+            // )
           ],
         ),
       ),

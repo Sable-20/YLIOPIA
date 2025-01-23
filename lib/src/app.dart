@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:catppuccin_flutter/catppuccin_flutter.dart';
+
 import 'ui/sample_feature/sample_item_details_view.dart';
 import 'ui/sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
+import 'ui/core/themes/catppuccin/catppuccin.dart';
 
 /// The Widget that configures your application.
 class App extends StatelessWidget {
@@ -41,10 +44,7 @@ class App extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: const [
-            Locale('en', 'US'), // English
-            Locale('es', 'SV'), // Spanish, El Salvador
-          ],
+          supportedLocales: AppLocalizations.supportedLocales,
 
           // Use AppLocalizations to configure the correct application title
           // depending on the user's locale.
@@ -52,7 +52,8 @@ class App extends StatelessWidget {
           // The appTitle is defined in .arb files found in the localization
           // directory.
           onGenerateTitle: (BuildContext context) =>
-              AppLocalizations.of(context)?.appTitle ?? "yliopia", // using null aware access operator to avoid using the null-assertion operator since that's just generally speaking bad practice
+              // ignore: avoid-non-null-assertion
+              AppLocalizations.of(context)!.appTitle, // null assertion code is okay this is coming from our translation that we write by hand. No chance of it not existing.
 
               // in this case the app title will always be `yliopia` so this honestly isn't that big a deal.
 
@@ -60,7 +61,7 @@ class App extends StatelessWidget {
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
           theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
+          darkTheme: catppuccinTheme(catppuccin.frappe),
           themeMode: settingsController.themeMode,
 
           // Define a function to handle named routes in order to support

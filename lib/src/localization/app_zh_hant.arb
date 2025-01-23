@@ -1,0 +1,14 @@
+{
+  "@@locale": "zsh_HANT",
+  "@@author": "Sable Ayala",
+  "@@last_modified": "2025-01-23 13:48:41",
+  "appTitle": "yliopia",
+  "@appTitle": {
+    "description": "App title"
+  },
+  "todoTitle": "待办事项",
+  "@todoTitle": {
+    "description": "todo list",
+    "type": "text"
+  }
+}
