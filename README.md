@@ -7,16 +7,6 @@ I have always wanted a organizer built for students by students. Yes there are m
 
 **In short:** this is a highly opinionated app that maybe not every will agree with.
 
-## Getting Started
-
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/to/state-management-sample).
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 ## Assets
 
 The `assets` directory houses images, fonts, and any other files you want to
