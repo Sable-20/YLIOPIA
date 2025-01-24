@@ -22,7 +22,6 @@ class SampleItemListView extends StatelessWidget {
       appBar: AppBar(
         // ignore: avoid-non-null-assertion
         title: Text(AppLocalizations.of(context)!.todoTitle,),
-        // title: const Text('Sample Items'),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),

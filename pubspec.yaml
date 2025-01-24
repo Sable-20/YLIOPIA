@@ -17,6 +17,8 @@ dependencies:
     sdk: flutter
   objectbox: any
   objectbox_flutter_libs: any
+  path: any
+  path_provider: any
 
 dev_dependencies:
   flutter_test:
@@ -38,4 +40,4 @@ flutter:
     - assets/images/
 
 objectbox:
-  output_dir: data
+  output_dir: src/data
