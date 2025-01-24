@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning].
 
 - /
 
+## 1.0.0+5 - 2025-01-23
+
+### Added 
+
+- `catppuccin` theme as dark theme
+- added dependabot
+
+### Fixed
+
+- Resolved [Issue #3 (Higher minimum deployment target required for MacOS)](https://github.com/Sable-20/YLIOPIA/issues/3)
+  - Summary: resolved by editing `Podfile` in `macos` build directory
+
 ## 1.0.0+4 - 2025-01-20
 
 ### Added
