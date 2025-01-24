@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:3647901006670192780",
-      "lastPropertyId": "3:5847640788053031588",
+      "lastPropertyId": "4:5746843811207173531",
       "name": "Task",
       "properties": [
         {
@@ -23,13 +23,45 @@
           "id": "3:5847640788053031588",
           "name": "completed",
           "type": 1
+        },
+        {
+          "id": "4:5746843811207173531",
+          "name": "groupId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:147713378114972962",
+          "relationTarget": "Group"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:1668141968332340035",
+      "lastPropertyId": "3:4520769007564887378",
+      "name": "Group",
+      "properties": [
+        {
+          "id": "1:1781360638887788491",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:536636614670309566",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:4520769007564887378",
+          "name": "color",
+          "type": 6
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:3647901006670192780",
-  "lastIndexId": "0:0",
+  "lastEntityId": "2:1668141968332340035",
+  "lastIndexId": "1:147713378114972962",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

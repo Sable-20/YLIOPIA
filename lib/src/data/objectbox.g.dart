@@ -14,6 +14,7 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
+import '../../src/domain/models/group.dart';
 import '../../src/domain/models/task.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
@@ -22,7 +23,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(1, 3647901006670192780),
       name: 'Task',
-      lastPropertyId: const obx_int.IdUid(3, 5847640788053031588),
+      lastPropertyId: const obx_int.IdUid(4, 5746843811207173531),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -39,10 +40,43 @@ final _entities = <obx_int.ModelEntity>[
             id: const obx_int.IdUid(3, 5847640788053031588),
             name: 'completed',
             type: 1,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 5746843811207173531),
+            name: 'groupId',
+            type: 11,
+            flags: 520,
+            indexId: const obx_int.IdUid(1, 147713378114972962),
+            relationTarget: 'Group')
+      ],
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(2, 1668141968332340035),
+      name: 'Group',
+      lastPropertyId: const obx_int.IdUid(3, 4520769007564887378),
+      flags: 0,
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 1781360638887788491),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 536636614670309566),
+            name: 'name',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 4520769007564887378),
+            name: 'color',
+            type: 6,
             flags: 0)
       ],
       relations: <obx_int.ModelRelation>[],
-      backlinks: <obx_int.ModelBacklink>[])
+      backlinks: <obx_int.ModelBacklink>[
+        obx_int.ModelBacklink(name: 'tasks', srcEntity: 'Task', srcField: '')
+      ])
 ];
 
 /// Shortcut for [obx.Store.new] that passes [getObjectBoxModel] and for Flutter
@@ -80,8 +114,8 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(1, 3647901006670192780),
-      lastIndexId: const obx_int.IdUid(0, 0),
+      lastEntityId: const obx_int.IdUid(2, 1668141968332340035),
+      lastIndexId: const obx_int.IdUid(1, 147713378114972962),
       lastRelationId: const obx_int.IdUid(0, 0),
       lastSequenceId: const obx_int.IdUid(0, 0),
       retiredEntityUids: const [],
@@ -95,7 +129,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
   final bindings = <Type, obx_int.EntityDefinition>{
     Task: obx_int.EntityDefinition<Task>(
         model: _entities[0],
-        toOneRelations: (Task object) => [],
+        toOneRelations: (Task object) => [object.group],
         toManyRelations: (Task object) => {},
         getId: (Task object) => object.id,
         setId: (Task object, int id) {
@@ -103,10 +137,11 @@ obx_int.ModelDefinition getObjectBoxModel() {
         },
         objectToFB: (Task object, fb.Builder fbb) {
           final descriptionOffset = fbb.writeString(object.description);
-          fbb.startTable(4);
+          fbb.startTable(5);
           fbb.addInt64(0, object.id);
           fbb.addOffset(1, descriptionOffset);
           fbb.addBool(2, object.completed);
+          fbb.addInt64(3, object.group.targetId);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -120,7 +155,46 @@ obx_int.ModelDefinition getObjectBoxModel() {
             ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
             ..completed =
                 const fb.BoolReader().vTableGet(buffer, rootOffset, 8, false);
-
+          object.group.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
+          object.group.attach(store);
+          return object;
+        }),
+    Group: obx_int.EntityDefinition<Group>(
+        model: _entities[1],
+        toOneRelations: (Group object) => [],
+        toManyRelations: (Group object) => {
+              obx_int.RelInfo<Task>.toOneBacklink(
+                      4, object.id, (Task srcObject) => srcObject.group):
+                  object.tasks
+            },
+        getId: (Group object) => object.id,
+        setId: (Group object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Group object, fb.Builder fbb) {
+          final nameOffset = fbb.writeString(object.name);
+          fbb.startTable(4);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, nameOffset);
+          fbb.addInt64(2, object.color);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (obx.Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final nameParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 6, '');
+          final colorParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
+          final object = Group(name: nameParam, color: colorParam)
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          obx_int.InternalToManyAccess.setRelInfo<Group>(
+              object.tasks,
+              store,
+              obx_int.RelInfo<Task>.toOneBacklink(
+                  4, object.id, (Task srcObject) => srcObject.group));
           return object;
         })
   };
@@ -140,4 +214,25 @@ class Task_ {
   /// See [Task.completed].
   static final completed =
       obx.QueryBooleanProperty<Task>(_entities[0].properties[2]);
+
+  /// See [Task.group].
+  static final group =
+      obx.QueryRelationToOne<Task, Group>(_entities[0].properties[3]);
+}
+
+/// [Group] entity fields to define ObjectBox queries.
+class Group_ {
+  /// See [Group.id].
+  static final id = obx.QueryIntegerProperty<Group>(_entities[1].properties[0]);
+
+  /// See [Group.name].
+  static final name =
+      obx.QueryStringProperty<Group>(_entities[1].properties[1]);
+
+  /// See [Group.color].
+  static final color =
+      obx.QueryIntegerProperty<Group>(_entities[1].properties[2]);
+
+  /// see [Group.tasks]
+  static final tasks = obx.QueryBacklinkToMany<Task, Group>(Task_.group);
 }
