@@ -9,16 +9,22 @@ version: 1.0.1+0
 environment:
   sdk: ^3.6.1
 
+analyzer:
+  plugins:
+    - custom_lint
+
 dependencies:
   catppuccin_flutter: ^1.0.0
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  objectbox: any
-  objectbox_flutter_libs: any
+  flutter_riverpod: ^2.6.1
   path: any
   path_provider: any
+  riverpod: any
+  riverpod_annotation: ^2.6.1
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
@@ -27,7 +33,9 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   dart_code_metrics_presets: ^2.20.0
   build_runner: ^2.4.14
-  objectbox_generator: any
+  riverpod_generator: ^2.6.4
+  custom_lint: ^0.7.1
+  riverpod_lint: ^2.6.4
 
 flutter:
   uses-material-design: true
@@ -38,6 +46,3 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
-
-objectbox:
-  output_dir: src/data
